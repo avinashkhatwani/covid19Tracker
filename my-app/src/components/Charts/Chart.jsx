@@ -11,6 +11,8 @@ const Chart = () =>{
         const fetchApi = async () => {
             // const fetchData = await fetchDailyData();
             setDailyData(await fetchDailyData());
+            if (dailyData.length)
+                console.log(dailyData.map())
         }
 
         fetchApi();
@@ -22,7 +24,7 @@ const Chart = () =>{
         ? (
             <Line 
             data = {{
-                labels: dailyData.map(({date}) => date),
+                labels: dailyData.map((data) => data.date),
                 datasets: [{
                     data: dailyData.map(({confirmed}) => confirmed),
                     label: 'Infected',
@@ -40,8 +42,8 @@ const Chart = () =>{
         ) : null
     );
 
-    console.log("Here")
-    console.log(dailyData)
+    // console.log("Here")
+    // console.log(dailyData)
     return(
         <div className={styles.container}>
             {lineChart}
