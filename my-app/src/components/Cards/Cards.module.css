@@ -11,9 +11,6 @@
     background-color: whitesmoke;
 }
 
-.greenText {
-    flood-color: green;
-}
 
 .infected {
     border-bottom: 10px solid rgba(0, 0, 255, 0.5);

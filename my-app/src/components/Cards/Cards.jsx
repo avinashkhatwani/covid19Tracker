@@ -6,9 +6,6 @@ import cx from 'classnames'
 
 const Cards = (props) => {
     // console.log(props)
-    const daths = props.data.confirmed
-    const red = '#000'
-    console.log(daths)
     if(!props.data.confirmed){
         return 'Loading...'
     }
