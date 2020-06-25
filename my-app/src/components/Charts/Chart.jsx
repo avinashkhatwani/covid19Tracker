@@ -11,8 +11,6 @@ const Chart = () =>{
         const fetchApi = async () => {
             // const fetchData = await fetchDailyData();
             setDailyData(await fetchDailyData());
-            if (dailyData.length)
-                console.log(dailyData.map())
         }
 
         fetchApi();
@@ -43,7 +41,7 @@ const Chart = () =>{
     );
 
     // console.log("Here")
-    // console.log(dailyData)
+    // console.log(dailyData.map((data)=> data.confirmed))
     return(
         <div className={styles.container}>
             {lineChart}
