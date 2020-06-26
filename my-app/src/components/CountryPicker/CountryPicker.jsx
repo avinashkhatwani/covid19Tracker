@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import styles from './CountryPicker.module.css'
 import { NativeSelect, FormControl } from '@material-ui/core'
+import {Card, CardContent, Typography, Grid} from '@material-ui/core'
+import cx from 'classnames'
 
 import {fetchCountries} from '../../api'
 
@@ -23,12 +25,27 @@ const CountryPicker = ({handleCountryChange}) =>{
     if(fetchedCountries.length){
         return(
             <div>
-                <FormControl className={styles.formControl}>
+                <Grid container spacing={4} justify="center">
+                    <Grid item component={Card} xs={12} md={3} className={cx(styles.card)}>
+                        <CardContent className={styles.CardContent}>
+                            <Typography variant="h5">
+                                Pick a Country
+                            </Typography>
+                            <FormControl className={styles.formControl}>
+                                <NativeSelect defaultValue="" onChange={(e)=> {handleCountryChange(e.target.value)}}>
+                                    <option value="">Global</option>
+                                    {fetchedCountries.map((country, i)=> <option key={i} value={country}>{country}</option>)}
+                                </NativeSelect>
+                            </FormControl>
+                        </CardContent>
+                    </Grid>
+                </Grid>
+                {/* <FormControl className={styles.formControl}>
                     <NativeSelect defaultValue="" onChange={(e)=> {handleCountryChange(e.target.value)}}>
                         <option value="global">Global</option>
                         {fetchedCountries.map((country, i)=> <option key={i} value={country}>{country}</option>)}
                     </NativeSelect>
-                </FormControl>
+                </FormControl> */}
                 <br></br>
             </div>
 

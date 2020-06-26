@@ -1,0 +1,13 @@
+.card {
+    margin: 0 2px !important;
+    width: 1500px;
+}
+
+.CardContent {
+    background-color: rgb(194, 194, 194);
+}
+
+.formControl{
+    width: 60%;
+    /* margin-bottom: 30px !important; */
+}

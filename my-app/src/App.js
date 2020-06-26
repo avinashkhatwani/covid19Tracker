@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import coronaImg from './images/covid.png'
 import {Cards, Chart, CountryPicker} from './components'
 import styles from './App.module.css'
 
 import { fetchData } from './api'
+
+
 
 class App extends Component {
 
@@ -20,17 +23,27 @@ class App extends Component {
   }
 
   handleCountryChange = async(country) =>{
-    console.log(country);
+    if(country === "global"){
+      const fetchedData = await fetchData();
+      this.setState({data: fetchedData})
+    }
+    else{
+      const fetchedData = await fetchData(country);
+      this.setState({data: fetchedData, country: country})
+      // console.log(this.state);
+    }
   }
 
   render() {
-    const data = this.state.data;
+    // const data = this.state.data;
+    const {data, country} = this.state;
     return (
       <div className={styles.container}>
+        <img className={styles.image} src={coronaImg} alt="COVID-19"/>
         <Cards data={data} />
         <CountryPicker handleCountryChange={this.handleCountryChange}/>
         <br/>
-        <Chart/>
+        <Chart data={data} country={country}/>
         <br/>
       </div>
     );
